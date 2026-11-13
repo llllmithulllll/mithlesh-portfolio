@@ -1,0 +1,130 @@
+.shared-body {
+  overflow: hidden;
+  padding: 0;
+}
+
+.shared-explorer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  background: #f8fafb;
+}
+
+.shared-explorer .shared-explorer-side {
+  flex: 0 0 164px;
+  width: 164px;
+  padding: 17px 9px;
+  overflow-y: auto;
+}
+
+.shared-explorer .shared-explorer-side button {
+  min-height: 34px;
+  height: auto;
+  padding: 5px 8px;
+  font-size: 11px;
+}
+
+.shared-explorer-main {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.shared-crumb {
+  flex: 0 0 42px;
+  width: 100%;
+  height: 42px;
+  padding: 0 17px;
+  border-bottom: 1px solid #dce5e9;
+  background: #fff;
+}
+
+.shared-crumb strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shared-crumb input {
+  width: min(180px, 25%);
+  min-width: 0;
+}
+
+.shared-explorer-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: #fff;
+}
+
+.shared-explorer-content > .content-switch {
+  min-height: 100%;
+}
+
+.computer-view h1 {
+  margin-top: 8px;
+}
+
+.computer-view .folder-grid {
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+
+.computer-view .folder-card {
+  min-height: 114px;
+}
+
+@media (max-width: 900px) {
+  .shared-explorer {
+    flex-direction: column;
+  }
+
+  .shared-explorer .shared-explorer-side {
+    display: flex;
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    gap: 3px;
+    padding: 4px 7px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-right: 0;
+    border-bottom: 1px solid #d9e3e8;
+    background: linear-gradient(100deg, #edf3f6, #f3f7f8);
+  }
+
+  .shared-explorer .shared-explorer-side .side-caption {
+    display: none;
+  }
+
+  .shared-explorer .shared-explorer-side button {
+    flex: 0 0 auto;
+    width: auto;
+    min-height: 31px;
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+
+  .shared-explorer-main {
+    flex: 1 1 auto;
+  }
+
+  .shared-crumb {
+    flex-basis: 35px;
+    height: 35px;
+    padding: 0 10px;
+  }
+
+  .shared-crumb input {
+    display: none;
+  }
+
+  .computer-view .folder-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
