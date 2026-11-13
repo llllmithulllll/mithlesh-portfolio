@@ -23,10 +23,10 @@ function loadSettings():PortfolioSettings{try{return normalizeSettings(JSON.pars
 export default function Desktop(){
   const [start,setStart]=useState(false); const [query,setQuery]=useState('');
   const [selected,setSelected]=useState<AppId|null>(null); const [context,setContext]=useState<{x:number;y:number}|null>(null); const [wall,setWall]=useState(0); const [boot,setBoot]=useState(!sessionStorage.getItem('booted'));
-  const [settings,setSettings]=useState<PortfolioSettings>(loadSettings);const [story,setStory]=useState('computer');const [displayApp,setDisplayApp]=useState<AppId>('computer');const [selectedProject,setSelectedProject]=useState<Project|null>(null);const [transitionPhase,setTransitionPhase]=useState('opening');const [maximized,setMaximized]=useState(false);const transitionTimer=useRef<number|null>(null);const currentScene=useRef('computer');
+  const [settings,setSettings]=useState<PortfolioSettings>(loadSettings);const [story,setStory]=useState<AppId>('computer');const [displayApp,setDisplayApp]=useState<AppId>('computer');const [selectedProject,setSelectedProject]=useState<Project|null>(null);const [transitionPhase,setTransitionPhase]=useState('opening');const [maximized,setMaximized]=useState(false);const transitionTimer=useRef<number|null>(null);const currentScene=useRef('computer');
   const persistSettings=(next:PortfolioSettings)=>{setSettings(next);try{localStorage.setItem('portfolioSettingsV1',JSON.stringify(next))}catch{window.alert('Could not save in this browser.')}};
   useEffect(()=>{if(!backendConfigured)return;readPublishedContent().then(remote=>setSettings(current=>normalizeSettings({...current,...(remote.content||{}),extraProjects:remote.projects,deletedProjectIds:remote.deletedProjectIds}))).catch(error=>console.error('Could not load live portfolio content',error))},[]);
-  useEffect(()=>{const root=document.querySelector('.scroll-story');if(!root)return;const observer=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!visible)return;const next=(visible.target as HTMLElement).dataset.scene||'computer';if(currentScene.current===next)return;currentScene.current=next;setStory(next);setTransitionPhase('closing');if(transitionTimer.current)window.clearTimeout(transitionTimer.current);transitionTimer.current=window.setTimeout(()=>{setDisplayApp(next as AppId);if(next!=='projects')setSelectedProject(null);setTransitionPhase('opening');transitionTimer.current=window.setTimeout(()=>setTransitionPhase('steady'),440)},150)},{root,threshold:[.35,.6,.8]});root.querySelectorAll('[data-scene]').forEach(n=>observer.observe(n));return()=>{observer.disconnect();if(transitionTimer.current)window.clearTimeout(transitionTimer.current)}},[]);
+  useEffect(()=>{const root=document.querySelector('.scroll-story');if(!root)return;const observer=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!visible)return;const next=(visible.target as HTMLElement).dataset.scene||'computer';if(currentScene.current===next)return;currentScene.current=next;setStory(next as AppId);setTransitionPhase('closing');if(transitionTimer.current)window.clearTimeout(transitionTimer.current);transitionTimer.current=window.setTimeout(()=>{setDisplayApp(next as AppId);if(next!=='projects')setSelectedProject(null);setTransitionPhase('opening');transitionTimer.current=window.setTimeout(()=>setTransitionPhase('steady'),440)},150)},{root,threshold:[.35,.6,.8]});root.querySelectorAll('[data-scene]').forEach(n=>observer.observe(n));return()=>{observer.disconnect();if(transitionTimer.current)window.clearTimeout(transitionTimer.current)}},[]);
   useEffect(()=>{const k=(e:KeyboardEvent)=>{if(e.key==='Escape'){setStart(false);setContext(null)}};window.addEventListener('keydown',k);return()=>window.removeEventListener('keydown',k)},[]);
   useEffect(()=>{if(!boot)return;const t=setTimeout(()=>{setBoot(false);sessionStorage.setItem('booted','1')},1450);return()=>clearTimeout(t)},[boot]);
   const open=(id:AppId,project?:Project)=>{const scene=id;currentScene.current=scene;setStory(scene);setTransitionPhase('closing');if(transitionTimer.current)window.clearTimeout(transitionTimer.current);transitionTimer.current=window.setTimeout(()=>{setDisplayApp(scene);setSelectedProject(project||null);setTransitionPhase('opening');transitionTimer.current=window.setTimeout(()=>setTransitionPhase('steady'),440)},150);document.querySelector(`[data-scene="${scene}"]`)?.scrollIntoView({behavior:'smooth'});};
@@ -41,7 +41,69 @@ export default function Desktop(){
       <section id="story-computer" className="scroll-scene welcome-scene" data-scene="computer" />
       {(['about','projects','skills','resume','contact','editor'] as AppId[]).map((id,i)=><section key={id} id={`story-${id}`} data-scene={id} className="scroll-scene scroll-marker" aria-label={`Scroll scene: ${glyph(id).label}`}><span className={`marker-hint ${story===id?'is-current':''}`}><i/>{glyph(id).label}<small>SECTION {String(i+2).padStart(2,'0')} OF 07</small></span></section>)}
     </div>
-    {(()=>{const a=glyph(displayApp),Icon=a.icon;const title=selectedProject?.name||a.label;return <section className={`window shared-window ${maximized?'maximized':''} switch-${transitionPhase}`} aria-label={`${title} window`}><div className="titlebar"><span className="title-app"><span className="tiny-app" style={{'--icon':a.color} as React.CSSProperties}><Icon size={14}/></span>{title}</span><div className="win-controls"><button aria-label="Minimize to My Computer" onClick={()=>open('computer')}><Minus size={14}/></button><button aria-label={maximized?'Restore window':'Maximize window'} onClick={()=>setMaximized(x=>!x)}><Square size={11}/></button><button className="close" aria-label="Close window and return to My Computer" onClick={()=>open('computer')}><X size={15}/></button></div></div><div className="window-body shared-body" key={`${displayApp}-${selectedProject?.id||''}`}><div className="explorer shared-explorer"><ExplorerSidebar story={story} open={open}/><div className="explorer-main shared-explorer-main"><div className="crumb shared-crumb"><span>My Computer</span><ChevronRight size={14}/><strong>{selectedProject?.name||a.label}</strong><span className="crumb-spacer"/><Search size={14}/><input aria-label="Search portfolio" placeholder="Search this computer"/></div><div className="shared-explorer-content"><div className="content-switch">{displayApp==='projects'&&selectedProject?<div className="project-detail-shell"><button className="secondary-btn back-projects" onClick={()=>{setTransitionPhase('closing');window.setTimeout(()=>{setSelectedProject(null);setTransitionPhase('opening');window.setTimeout(()=>setTransitionPhase('steady'),440)},150)}}><ChevronRight size={14}/> Back to projects</button><ProjectDetail project={selectedProject}/></div>:displayApp==='editor'?<PortfolioEditor key={JSON.stringify(settings)} settings={settings} onSave={persistSettings}/>:displayApp==='projects'?<ProjectBrowser settings={settings} onSave={persistSettings} open={open}/>:<AppContent id={displayApp} open={open} settings={settings} onSave={persistSettings}/>}</div></div></div></div><div className="window-status"><span><span className="status-dot"/> {story==='computer'?'Welcome':'Ready'}</span><span>SCROLL TO SWITCH WINDOW</span></div></section>})()}
+    {(() => {
+      const a = glyph(displayApp);
+      const Icon = a.icon;
+      const title = selectedProject?.name || a.label;
+      return (
+        <section className={`window shared-window ${maximized ? 'maximized' : ''} switch-${transitionPhase}`} aria-label={`${title} window`}>
+          <div className="titlebar">
+            <span className="title-app">
+              <span className="tiny-app" style={{ '--icon': a.color } as React.CSSProperties}><Icon size={14} /></span>
+              {title}
+            </span>
+            <div className="win-controls">
+              <button aria-label="Minimize to My Computer" onClick={() => open('computer')}><Minus size={14} /></button>
+              <button aria-label={maximized ? 'Restore window' : 'Maximize window'} onClick={() => setMaximized(x => !x)}><Square size={11} /></button>
+              <button className="close" aria-label="Close window and return to My Computer" onClick={() => open('computer')}><X size={15} /></button>
+            </div>
+          </div>
+          <div className="window-body shared-body" key={`${displayApp}-${selectedProject?.id || ''}`}>
+            <div className="explorer shared-explorer">
+              <ExplorerSidebar story={story} open={open} />
+              <div className="explorer-main shared-explorer-main">
+                <div className="crumb shared-crumb">
+                  <span>My Computer</span><ChevronRight size={14} />
+                  <strong>{selectedProject?.name || a.label}</strong>
+                  <span className="crumb-spacer" />
+                  <Search size={14} />
+                  <input aria-label="Search portfolio" placeholder="Search this computer" />
+                </div>
+                <div className="shared-explorer-content">
+                  <div className="content-switch">
+                    {displayApp === 'projects' && selectedProject ? (
+                      <div className="project-detail-shell">
+                        <button className="secondary-btn back-projects" onClick={() => {
+                          setTransitionPhase('closing');
+                          window.setTimeout(() => {
+                            setSelectedProject(null);
+                            setTransitionPhase('opening');
+                            window.setTimeout(() => setTransitionPhase('steady'), 440);
+                          }, 150);
+                        }}>
+                          <ChevronRight size={14} /> Back to projects
+                        </button>
+                        <ProjectDetail project={selectedProject} />
+                      </div>
+                    ) : displayApp === 'editor' ? (
+                      <PortfolioEditor key={JSON.stringify(settings)} settings={settings} onSave={persistSettings} />
+                    ) : displayApp === 'projects' ? (
+                      <ProjectBrowser settings={settings} onSave={persistSettings} open={open} />
+                    ) : (
+                      <AppContent id={displayApp} open={open} settings={settings} onSave={persistSettings} />
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="window-status">
+            <span><span className="status-dot" /> {story === 'computer' ? 'Welcome' : 'Ready'}</span>
+            <span>SCROLL TO SWITCH WINDOW</span>
+          </div>
+        </section>
+      );
+    })()}
     {start&&<><button className="menu-backdrop" aria-label="Close start menu" onClick={()=>setStart(false)}/><section className="start-menu"><div className="start-profile"><div className="avatar">{settings.profile.name.split(/\s+/).map(x=>x[0]).slice(0,2).join('')}</div><div><strong>{settings.profile.name}</strong><small>Portfolio desktop</small></div><button className="power" title="Close menu" onClick={()=>setStart(false)}><Power size={17}/></button></div><div className="start-content"><div className="start-list">{['about','projects','skills','resume','contact'].map(k=>{const a=glyph(k as AppId),Icon=a.icon;return <button key={k} onClick={()=>openResult(k as AppId)}><Icon size={17}/><span>{a.label}</span><ChevronRight size={14}/></button>})}<div className="recent-label">MY PORTFOLIO</div><button onClick={()=>openResult('computer')}><Laptop size={17}/><span>My Computer</span><ChevronRight size={14}/></button></div><div className="start-search"><label className="searchbox"><Search size={15}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search programs and files" autoFocus/></label><div className="search-results">{results.map((r:any,i:number)=>{const RIcon=r.icon;return <button key={`${r.id}-${i}`} onClick={()=>r.project?(open('projects',r.project),setStart(false)):openResult(r.id)}><RIcon size={17}/><span>{r.label}</span><small>{r.project?'Project':'Application'}</small></button>})}{!results.length&&<p>No matching items</p>}</div></div></div><div className="start-footer"><span>All programs <ChevronRight size={13}/></span><button onClick={()=>setStart(false)}>Shut down <Power size={14}/></button></div></section></>}
     {context&&<div className="context-menu" style={{left:Math.min(context.x,window.innerWidth-190),top:Math.min(context.y,window.innerHeight-190)}}>{[{label:'Open',action:()=>selected&&open(selected)},{label:'Personalize',action:()=>setWall((wall+1)%3)},{label:'Refresh',action:()=>setSelected(null)}].map(x=><button key={x.label} onClick={()=>{x.action();setContext(null)}}>{x.label}</button>)}</div>}
     <footer className="taskbar"><button className={`start-orb ${start?'pressed':''}`} onClick={()=>setStart(!start)} aria-label="Start menu"><span className="start-text">start</span></button><div className="story-shortcuts">{(['computer','about','projects','skills','contact'] as AppId[]).map(id=>{const a=glyph(id),Icon=a.icon;return <button key={id} className={`story-shortcut ${story===id?'active':''}`} title={`Scroll to ${a.label}`} onClick={()=>document.querySelector(`#story-${id}`)?.scrollIntoView({behavior:'smooth'})}><Icon size={17}/><span>{a.label}</span></button>})}</div><div className="task-apps"/><div className="tray"><button className="tray-button" title="Audio is off by default"><VolumeX size={15}/></button><button className="tray-button" onClick={()=>setWall((wall+1)%3)} title="Change wallpaper"><Settings2 size={15}/></button><SystemClock/><span className="show-desktop" title="Show desktop" onClick={()=>open('computer')}/></div></footer>
