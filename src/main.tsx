@@ -13,5 +13,6 @@ import './about-portrait.css';
 import './shared-navigation.css';
 import './social-buttons.css';
 import './dark-mode.css';
+import './mobile.css';
 
 createRoot(document.getElementById('root')!).render(<React.StrictMode>{window.location.pathname.replace(/\/$/,'')==='/admin'?<PortfolioAdmin/>:<Desktop/>}</React.StrictMode>);

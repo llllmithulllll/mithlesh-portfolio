@@ -1,0 +1,550 @@
+@media (max-width: 760px) {
+  .desktop {
+    width: 100%;
+    height: 100dvh;
+    min-height: 0;
+  }
+
+  .desktop-top {
+    height: 43px;
+    padding: 0 10px;
+    font-size: 8px;
+    letter-spacing: .08em;
+  }
+
+  .desktop-top .brand {
+    gap: 6px;
+    font-size: 8px;
+  }
+
+  .desktop>.icon-grid {
+    top: 45px;
+    left: 6px;
+    right: 6px;
+    width: auto;
+    height: 53px;
+    padding: 0 2px;
+    transform: none;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 2px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    touch-action: pan-x;
+  }
+
+  .desktop>.icon-grid::-webkit-scrollbar,
+  .shared-explorer-side::-webkit-scrollbar,
+  .story-shortcuts::-webkit-scrollbar {
+    display: none;
+  }
+
+  .desktop>.icon-grid .desktop-icon {
+    flex: 0 0 51px;
+    width: 51px;
+    min-width: 51px;
+    min-height: 49px;
+    height: 49px;
+    padding: 2px;
+    gap: 1px;
+    font-size: 7px;
+  }
+
+  .desktop>.icon-grid .icon-art {
+    width: 25px;
+    height: 25px;
+  }
+
+  .desktop>.icon-grid .icon-art svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .desktop>.icon-grid .desktop-icon.active-section:after {
+    top: auto;
+    right: 5px;
+    bottom: 0;
+    left: 5px;
+    width: auto;
+    height: 2px;
+  }
+
+  .shared-window:not(.maximized) {
+    top: 103px;
+    left: 6px;
+    width: calc(100vw - 12px);
+    height: calc(100dvh - 149px);
+    min-height: 0;
+    transform: none;
+  }
+
+  .desktop.scene-welcome .shared-window:not(.maximized) {
+    top: auto;
+    bottom: 50px;
+    height: min(390px, calc(100dvh - 205px));
+    min-height: 260px;
+  }
+
+  .shared-window.maximized {
+    top: 5px;
+    left: 5px;
+    width: calc(100vw - 10px);
+    height: calc(100dvh - 47px);
+    min-height: 0;
+    transform: none;
+  }
+
+  .desktop:has(.shared-window.maximized)>.icon-grid {
+    display: none;
+  }
+
+  .shared-explorer {
+    min-height: 0;
+    flex-direction: column;
+  }
+
+  .shared-explorer .shared-explorer-side {
+    flex: 0 0 42px;
+    width: 100%;
+    height: 42px;
+    min-height: 42px;
+    gap: 2px;
+    padding: 4px 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    touch-action: pan-x;
+  }
+
+  .shared-explorer .shared-explorer-side button {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: max-content;
+    min-height: 32px;
+    height: 32px;
+    gap: 4px;
+    padding: 4px 6px;
+    font-size: 9px;
+  }
+
+  .shared-explorer-main {
+    flex: 1 1 auto;
+    width: 100%;
+    min-height: 0;
+    padding: 0 10px 22px;
+  }
+
+  .shared-crumb {
+    height: 36px;
+    min-width: 0;
+    gap: 5px;
+    padding: 0 3px;
+    font-size: 9px;
+  }
+
+  .shared-crumb .crumb-spacer,
+  .shared-crumb input,
+  .shared-crumb>svg:last-of-type {
+    display: none;
+  }
+
+  .shared-window .window-status {
+    height: 19px;
+    padding: 0 7px;
+    font-size: 7px;
+  }
+
+  .content-pad {
+    padding: 16px 12px 20px;
+  }
+
+  .content-pad h1 {
+    font-size: 22px;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+
+  .home-content {
+    justify-content: flex-start;
+    padding: 22px 14px;
+  }
+
+  .home-intro-row {
+    grid-template-columns: 64px minmax(0, 1fr);
+    align-items: start;
+    gap: 10px;
+  }
+
+  .home-profile-portrait {
+    width: 64px;
+  }
+
+  .home-intro-copy h1 {
+    font-size: clamp(19px, 6vw, 24px);
+    line-height: 1.16;
+  }
+
+  .home-intro-copy>p,
+  .home-intro-copy .home-role {
+    font-size: 10px;
+    line-height: 1.55;
+  }
+
+  .home-actions {
+    gap: 7px;
+    margin-top: 17px;
+  }
+
+  .home-actions button,
+  .folder-card,
+  .project-card,
+  .shared-explorer-side button,
+  .story-shortcut,
+  .tray-button,
+  .start-list button {
+    touch-action: manipulation;
+  }
+
+  .home-actions button {
+    min-height: 42px;
+    padding: 9px 10px;
+    font-size: 10px;
+  }
+
+  .home-scroll-hint {
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 18px;
+    font-size: 8px;
+  }
+
+  .computer-view .folder-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .computer-view .folder-card {
+    min-width: 0;
+    min-height: 88px;
+    align-items: center;
+    padding: 9px 6px;
+    text-align: center;
+  }
+
+  .computer-social-links .contact-links {
+    flex-wrap: wrap;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .project-card {
+    min-width: 0;
+    min-height: 0;
+    padding: 10px;
+  }
+
+  .project-card h3 {
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .project-card>p {
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .tech-row {
+    flex-wrap: wrap;
+  }
+
+  .skill-groups {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .resume-view {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .resume-toolbar {
+    gap: 6px;
+    font-size: 8px;
+  }
+
+  .resume-toolbar>span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .resume-toolbar .primary-btn {
+    min-height: 36px;
+    flex: 0 0 auto;
+    padding: 6px 8px;
+    font-size: 8px;
+  }
+
+  .resume-document {
+    min-height: 360px;
+    padding: 9px 5px;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .contact-aside {
+    display: block;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .admin-login input,
+  .admin-form input,
+  .admin-form textarea,
+  .admin-project-form input,
+  .admin-project-form textarea {
+    min-height: 42px;
+    font-size: 16px;
+  }
+
+  .contact-form textarea,
+  .admin-form textarea,
+  .admin-project-form textarea {
+    min-height: 100px;
+  }
+
+  .scroll-story {
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .marker-hint {
+    right: 8px;
+    top: 105px;
+    max-width: calc(100vw - 24px);
+    font-size: 9px;
+  }
+
+  .desktop:has(.shared-window.maximized) .marker-hint {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .desktop>.icon-grid {
+    left: 3px;
+    right: 3px;
+    height: 50px;
+  }
+
+  .desktop>.icon-grid .desktop-icon {
+    flex-basis: 48px;
+    width: 48px;
+    min-width: 48px;
+    height: 47px;
+    min-height: 47px;
+  }
+
+  .shared-window:not(.maximized) {
+    top: 99px;
+    height: calc(100dvh - 145px);
+  }
+
+  .desktop.scene-welcome .shared-window:not(.maximized) {
+    top: auto;
+  }
+
+  .shared-window .titlebar {
+    padding-left: 7px;
+  }
+
+  .shared-window .title-app {
+    min-width: 0;
+    overflow: hidden;
+    font-size: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .shared-window .win-controls {
+    flex: 0 0 auto;
+  }
+
+  .shared-window .win-controls button {
+    width: 20px;
+    height: 20px;
+  }
+
+  .shared-window .win-controls .close {
+    width: 35px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    padding: 12px;
+  }
+
+  .folder-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .form-two {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-aside {
+    display: none;
+  }
+
+  .taskbar {
+    height: calc(42px + env(safe-area-inset-bottom, 0px));
+    padding-right: max(4px, env(safe-area-inset-right, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    padding-left: max(4px, env(safe-area-inset-left, 0px));
+  }
+
+  .start-orb {
+    flex: 0 0 46px;
+    width: 46px;
+    height: 38px;
+    margin-left: 0;
+    border-radius: 0 9px 9px 0;
+  }
+
+  .start-text {
+    font-size: 12px;
+  }
+
+  .story-shortcuts {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+
+  .story-shortcut {
+    flex: 0 0 31px;
+    min-width: 31px;
+    padding: 0 5px;
+  }
+
+  .story-shortcut span {
+    display: none;
+  }
+
+  .tray {
+    flex: 0 0 auto;
+    gap: 1px;
+    padding: 0 2px;
+  }
+
+  .tray-button {
+    min-width: 27px;
+    min-height: 34px;
+    padding: 4px;
+  }
+
+  .clock {
+    min-width: 38px;
+  }
+
+  .clock small {
+    display: none;
+  }
+
+  .show-desktop {
+    width: 4px;
+    margin-left: 2px;
+  }
+
+  .admin-bar {
+    height: 52px;
+    min-height: 52px;
+  }
+
+  .admin-bar>strong {
+    font-size: 11px;
+  }
+
+  .admin-layout {
+    padding: 8px;
+  }
+
+  .admin-side>button {
+    min-height: 40px;
+  }
+
+  .admin-panel {
+    padding: 16px 12px;
+  }
+
+  .admin-panel-head {
+    gap: 8px;
+  }
+
+  .admin-panel-head h1 {
+    font-size: 20px;
+  }
+
+  .live-pill {
+    flex: 0 0 auto;
+    font-size: 8px;
+  }
+
+  .admin-project-row {
+    flex-wrap: wrap;
+  }
+
+  .admin-project-row>span {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .start-orb {
+    flex-basis: 40px;
+    width: 40px;
+  }
+
+  .story-shortcut {
+    flex-basis: 28px;
+    min-width: 28px;
+    padding: 0 4px;
+  }
+
+  .tray-button {
+    min-width: 24px;
+    padding: 3px;
+  }
+
+  .shared-explorer .shared-explorer-side button {
+    gap: 3px;
+    padding: 4px 5px;
+    font-size: 8px;
+  }
+
+  .home-intro-row {
+    grid-template-columns: 54px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .home-profile-portrait {
+    width: 54px;
+  }
+
+  .home-intro-copy h1 {
+    font-size: 19px;
+  }
+}
