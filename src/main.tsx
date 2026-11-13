@@ -9,5 +9,6 @@ import './desktop-theme.css';
 import './xp-theme.css';
 import './content-editor.css';
 import './admin.css';
+import './about-portrait.css';
 
 createRoot(document.getElementById('root')!).render(<React.StrictMode>{window.location.pathname.replace(/\/$/,'')==='/admin'?<PortfolioAdmin/>:<Desktop/>}</React.StrictMode>);

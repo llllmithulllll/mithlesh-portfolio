@@ -16,6 +16,9 @@ The design and feature requests were refined over time. The current direction is
 - Keep one main portfolio window on screen. Scrolling transitions the window contents through sections such as Home/About, Projects, Skills, Resume, and Contact, using smooth close/open-inspired motion.
 - Keep the desktop icons fixed while scrolling. Highlight only the icon for the section currently in view. The active section label/status must remain readable.
 - Restore the earlier, preferred landing/home presentation. It introduces Mithlesh and includes direct links into key sections.
+- Make About Me the first landing view and always show a portrait area there. Use the uploaded profile picture when available and a Windows-style initials placeholder until then.
+- Keep the desktop icon highlight limited to the single section currently in view; a previously clicked icon should not create a second highlight.
+- Remove the unused Recycle Bin from the desktop and scroll sequence.
 - Remove the terminal and AI logo/branding. The user wanted a tidy but detailed portfolio rather than a busy interface.
 - Make profile, picture, projects, skills, resume, and social links maintainable without editing application controls or taking down the site.
 - Support manual project entry as a reliable fallback and optionally import public GitHub repository metadata.
