@@ -4,7 +4,7 @@ This document is a self-contained briefing for a new AI assistant working on thi
 
 ## 1. What this project is
 
-A personal portfolio for Mithlesh Kumar, styled as a Windows XP desktop with a Windows 7 green-hills wallpaper. It is a single-window portfolio: **My Computer is the landing view**, with direct shortcuts to About Me, Projects, Skills, Resume, and Contact; scrolling then moves to About Me and the remaining portfolio sections inside the same window. Desktop icons stay fixed and indicate the currently active section. A shared section sidebar remains visible in every window; on narrow screens it becomes a horizontal navigation strip so the content keeps enough room to read. The app has a static-content mode that works without a backend and an optional authenticated Supabase dashboard for publishing edits to all visitors.
+A personal portfolio for Mithlesh Kumar, styled as a Windows XP desktop with a Windows 7 green-hills wallpaper. It is a single-window portfolio: **My Computer is the landing view**, with direct shortcuts and social/contact links; a visible “Scroll to explore” cue precedes About Me and the remaining portfolio sections inside the same window. Desktop icons stay fixed and indicate the currently active section. A shared section sidebar remains visible in every window; on narrow screens it becomes a horizontal navigation strip so the content keeps enough room to read. The app has a static-content mode that works without a backend and an optional authenticated Supabase dashboard for publishing edits to all visitors.
 
 The project is a client-rendered web app built with React 19, TypeScript, Vite 7, and Lucide icons. It does not have a custom application server. The browser loads the site; Vite builds static files into `dist/`.
 
@@ -16,6 +16,7 @@ The design and feature requests were refined over time. The current direction is
 - Keep one main portfolio window on screen. Scrolling transitions the window contents through sections such as Home/About, Projects, Skills, Resume, and Contact, using smooth close/open-inspired motion.
 - Keep the desktop icons fixed while scrolling. Highlight only the icon for the section currently in view. The active section label/status must remain readable.
 - Make My Computer the first landing view and use it as a shortcut hub for the portfolio pages. About Me is the next scroll window.
+- Keep LinkedIn, GitHub, email, website, and other social/contact links on My Computer; keep About Me focused on the biography. Show “Scroll to explore” on the My Computer landing view.
 - Do not show an Experience shortcut in My Computer; its current content is not a separate portfolio page.
 - Keep the same section navigation visible as content changes. The window should not collapse or shrink during transitions, and the reading area must remain usable at desktop and mobile sizes.
 - The About Me view always shows a portrait area. Use the uploaded profile picture when available and a Windows-style initials placeholder until then.
