@@ -17,6 +17,7 @@ The design and feature requests were refined over time. The current direction is
 - Keep the desktop icons fixed while scrolling. Highlight only the icon for the section currently in view. The active section label/status must remain readable.
 - Make My Computer the first landing view and use it as a shortcut hub for the portfolio pages. About Me is the next scroll window.
 - Keep LinkedIn, GitHub, email, website, and other social/contact links on My Computer; keep About Me focused on the biography. Show “Scroll to explore” on the My Computer landing view.
+- Render social profiles as clear icon buttons on My Computer, including LinkedIn and GitHub plus optional labeled links. Add a taskbar light/dark toggle with a matching XP-blue dark palette and remember the choice in the current browser.
 - Do not show an Experience shortcut in My Computer; its current content is not a separate portfolio page.
 - Keep the same section navigation visible as content changes. The window should not collapse or shrink during transitions, and the reading area must remain usable at desktop and mobile sizes.
 - The About Me view always shows a portrait area. Use the uploaded profile picture when available and a Windows-style initials placeholder until then.

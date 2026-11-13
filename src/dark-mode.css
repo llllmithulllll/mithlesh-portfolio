@@ -1,0 +1,287 @@
+.desktop.dark-mode {
+  color: #e3edf9;
+  color-scheme: dark;
+}
+
+.desktop.dark-mode:before {
+  filter: brightness(.68) saturate(.84);
+}
+
+.desktop.dark-mode.wall-1:before {
+  filter: brightness(.68) saturate(.84) hue-rotate(8deg);
+}
+
+.desktop.dark-mode.wall-2:before {
+  filter: brightness(.68) saturate(.75) hue-rotate(-8deg);
+}
+
+.desktop.dark-mode .shared-window {
+  border-color: #2f70b7;
+  background: #15253a;
+  color: #e4edf8;
+  box-shadow: 0 22px 60px #061426b8, 0 2px 8px #071a30a8, inset 0 1px #ffffff21;
+}
+
+.desktop.dark-mode .shared-window .titlebar {
+  background: linear-gradient(180deg, #428de0 0%, #246bc0 35%, #14519f 100%);
+  border-bottom-color: #0c468c;
+}
+
+.desktop.dark-mode .shared-window .window-status {
+  border-top-color: #2d4563;
+  background: #1a2d45;
+  color: #a8bdd4;
+}
+
+.desktop.dark-mode .window-body,
+.desktop.dark-mode .shared-explorer,
+.desktop.dark-mode .shared-explorer-main,
+.desktop.dark-mode .shared-explorer-content {
+  background: #14243a;
+  color: #e3edf9;
+}
+
+.desktop.dark-mode .shared-explorer .shared-explorer-side {
+  border-right-color: #304760;
+  background: linear-gradient(100deg, #192d45, #1b3049);
+}
+
+.desktop.dark-mode .shared-explorer .side-caption,
+.desktop.dark-mode .shared-explorer .explorer-bottom {
+  color: #9eb4cc;
+}
+
+.desktop.dark-mode .shared-explorer .shared-explorer-side button {
+  color: #c1d3e6;
+}
+
+.desktop.dark-mode .shared-explorer .shared-explorer-side button:hover,
+.desktop.dark-mode .shared-explorer .shared-explorer-side button.selected {
+  background: #254970;
+  color: #fff;
+}
+
+.desktop.dark-mode .shared-crumb {
+  border-bottom-color: #2b425d;
+  background: #1a2d45;
+  color: #b2c5d9;
+}
+
+.desktop.dark-mode .shared-crumb input,
+.desktop.dark-mode input,
+.desktop.dark-mode textarea,
+.desktop.dark-mode select {
+  border-color: #405a78;
+  background: #101d2e;
+  color: #e5eef9;
+}
+
+.desktop.dark-mode input::placeholder,
+.desktop.dark-mode textarea::placeholder {
+  color: #91a7c0;
+}
+
+.desktop.dark-mode .content-pad h1,
+.desktop.dark-mode .home-content h1,
+.desktop.dark-mode h2,
+.desktop.dark-mode h3,
+.desktop.dark-mode .home-intro-copy h1 {
+  color: #e4efff;
+}
+
+.desktop.dark-mode .eyebrow,
+.desktop.dark-mode .card-title,
+.desktop.dark-mode .section-heading h1 {
+  color: #9fcaff;
+}
+
+.desktop.dark-mode .muted,
+.desktop.dark-mode .section-heading p,
+.desktop.dark-mode .home-intro-copy > p,
+.desktop.dark-mode .computer-view > p,
+.desktop.dark-mode .content-pad p {
+  color: #bac9db;
+}
+
+.desktop.dark-mode .portfolio-editor label,
+.desktop.dark-mode .portfolio-editor label small,
+.desktop.dark-mode .project-tools-body label,
+.desktop.dark-mode .contact-form label,
+.desktop.dark-mode .editor-disclaimer,
+.desktop.dark-mode .form-footer small,
+.desktop.dark-mode .resume-toolbar,
+.desktop.dark-mode .resume-caption,
+.desktop.dark-mode .link-placeholder {
+  color: #b8c9dc;
+}
+
+.desktop.dark-mode .home-intro-copy .home-role {
+  color: #a8d3f5;
+}
+
+.desktop.dark-mode .info-card,
+.desktop.dark-mode .skill-group,
+.desktop.dark-mode .folder-card,
+.desktop.dark-mode .project-card,
+.desktop.dark-mode .resume-page,
+.desktop.dark-mode .contact-form,
+.desktop.dark-mode .contact-aside,
+.desktop.dark-mode .editor-view,
+.desktop.dark-mode .portfolio-editor,
+.desktop.dark-mode .project-tools,
+.desktop.dark-mode .project-tools-body,
+.desktop.dark-mode .project-tools .manual-add,
+.desktop.dark-mode .manage-projects,
+.desktop.dark-mode .admin-project-form {
+  border-color: #304a66;
+  background: linear-gradient(150deg, #1d314b, #182a41);
+  color: #dce8f6;
+}
+
+.desktop.dark-mode .folder-card,
+.desktop.dark-mode .project-card {
+  box-shadow: inset 0 1px #ffffff0a, 0 2px 8px #06142633;
+}
+
+.desktop.dark-mode .folder-card strong,
+.desktop.dark-mode .project-card h3,
+.desktop.dark-mode .skill-group h2,
+.desktop.dark-mode .resume-page h1,
+.desktop.dark-mode .resume-page h2 {
+  color: #e1efff;
+}
+
+.desktop.dark-mode .folder-card small,
+.desktop.dark-mode .project-card > p,
+.desktop.dark-mode .skill-group > p,
+.desktop.dark-mode .resume-page p {
+  color: #b5c7dc;
+}
+
+.desktop.dark-mode .note-box,
+.desktop.dark-mode .privacy-note,
+.desktop.dark-mode .tool-hint,
+.desktop.dark-mode .tool-notice {
+  border-color: #3b6a9b;
+  background: #1b3856;
+  color: #c4dcf4;
+}
+
+.desktop.dark-mode .skill-list span,
+.desktop.dark-mode .tech-row span {
+  border-color: #3b5877;
+  background: #243d5a;
+  color: #cfe3fa;
+}
+
+.desktop.dark-mode .project-status,
+.desktop.dark-mode .project-open,
+.desktop.dark-mode .resume-kicker {
+  color: #a8cff8;
+}
+
+.desktop.dark-mode .editor-tabs {
+  border-color: #304a66;
+  background: #172a41;
+}
+
+.desktop.dark-mode .editor-tabs button {
+  color: #bacce0;
+}
+
+.desktop.dark-mode .editor-tabs button.selected {
+  border-color: #3b628a;
+  background: linear-gradient(#294564, #203751);
+  color: #eff7ff;
+  box-shadow: inset 0 1px #ffffff12;
+}
+
+.desktop.dark-mode .home-scroll-hint {
+  color: #b0c2d7;
+}
+
+.desktop.dark-mode .home-scroll-dots i {
+  background: #55718e;
+}
+
+.desktop.dark-mode .home-scroll-dots i.active {
+  background: #71baff;
+}
+
+.desktop.dark-mode .computer-social-links {
+  border-top-color: #304a66;
+}
+
+.desktop.dark-mode .contact-links a.contact-link-button {
+  border-color: #426384;
+  background: linear-gradient(#294462, #203751);
+  color: #e0efff;
+  box-shadow: inset 0 1px #ffffff12, 0 1px 2px #06142666;
+}
+
+.desktop.dark-mode .contact-links a.contact-link-linkedin {
+  border-color: #397fc0;
+  background: linear-gradient(#3588d3, #155b9f);
+  color: #fff;
+}
+
+.desktop.dark-mode .contact-links a.contact-link-github {
+  border-color: #526b87;
+  background: linear-gradient(#405772, #293d54);
+  color: #fff;
+}
+
+.desktop.dark-mode .contact-links a.contact-link-email {
+  border-color: #3285c6;
+  background: linear-gradient(#3d91d7, #2168a8);
+  color: #fff;
+}
+
+.desktop.dark-mode .secondary-btn,
+.desktop.dark-mode .home-actions button,
+.desktop.dark-mode .back-projects {
+  border-color: #476584;
+  background: linear-gradient(#2c4561, #223850);
+  color: #dcecff;
+}
+
+.desktop.dark-mode .context-menu,
+.desktop.dark-mode .start-menu {
+  border-color: #35679d;
+  background: #192e48;
+  color: #e2edfb;
+}
+
+.desktop.dark-mode .start-list button,
+.desktop.dark-mode .search-results button {
+  color: #d4e5f7;
+}
+
+.desktop.dark-mode .start-list button:hover,
+.desktop.dark-mode .search-results button:hover {
+  border-color: #426f9f;
+  background: #25476b;
+}
+
+.desktop.dark-mode .start-footer {
+  background: linear-gradient(180deg, #2869b7, #174e91);
+}
+
+.desktop.dark-mode .start-profile {
+  background: linear-gradient(180deg, #3b85d5, #1b559f);
+}
+
+.desktop.dark-mode .home-profile-portrait {
+  border-color: #4a83b9;
+  box-shadow: inset 0 1px #ffffff38, 0 3px 10px #07142680;
+}
+
+.desktop.dark-mode .taskbar {
+  box-shadow: 0 -3px 18px #07142666;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-links a.contact-link-button {
+    transition: none;
+  }
+}

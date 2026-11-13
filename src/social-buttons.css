@@ -1,0 +1,49 @@
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.contact-links a.contact-link-button {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid #a9bfd8;
+  border-radius: 4px;
+  background: linear-gradient(#fff, #e8f1fa);
+  box-shadow: inset 0 1px #fff, 0 1px 2px #193c641c;
+  color: #244d79;
+  font: 600 11px Tahoma, Verdana, sans-serif;
+  text-decoration: none;
+  transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
+}
+
+.contact-links a.contact-link-button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+  box-shadow: inset 0 1px #fff, 0 3px 8px #173f7026;
+}
+
+.contact-links a.contact-link-linkedin {
+  border-color: #145b9b;
+  background: linear-gradient(#3e91d4, #1764ad);
+  color: #fff;
+  text-shadow: 0 1px 1px #123e67;
+}
+
+.contact-links a.contact-link-github {
+  border-color: #304862;
+  background: linear-gradient(#526a83, #304860);
+  color: #fff;
+  text-shadow: 0 1px 1px #182738;
+}
+
+.contact-links a.contact-link-email {
+  border-color: #2672b7;
+  background: linear-gradient(#78b8eb, #3c88cd);
+  color: #fff;
+  text-shadow: 0 1px 1px #285b8b;
+}
