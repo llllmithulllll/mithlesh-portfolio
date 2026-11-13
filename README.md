@@ -1,6 +1,6 @@
 # Mithlesh Kumar · Portfolio Desktop
 
-Windows XP Luna inspired interactive portfolio built with React, TypeScript, Vite, and Lucide icons. It keeps one window on screen and switches its contents as visitors scroll through the green hills desktop.
+Windows XP Luna inspired interactive portfolio built with React, TypeScript, Vite, and Lucide icons. It keeps one window on screen and switches its contents as visitors scroll through the green hills desktop. My Computer is the landing view and provides shortcuts to the portfolio sections; About Me follows as the next scroll window.
 
 ## Run locally
 
