@@ -16,7 +16,7 @@ export const skills = {
 };
 
 export const profile = {
-  name: 'Mithlesh Kumar', role: 'Aspiring AI/ML Engineer · Developer · Technology Enthusiast', location: 'Himachal Pradesh, India', email: '', github: '', linkedin: '', website: '', resumeUrl: '/resume-placeholder.pdf', avatarUrl: '', otherLinks: [] as {label:string;url:string}[],
+  name: 'Mithlesh Kumar', role: 'Aspiring AI/ML Engineer · Developer · Technology Enthusiast', location: 'Himachal Pradesh, India', email: '', github: '', linkedin: '', website: '', resumeUrl: '/resume-placeholder.pdf', avatarUrl: '', emailJsServiceId: '', emailJsTemplateId: '', emailJsPublicKey: '', otherLinks: [] as {label:string;url:string;icon?:string}[],
   intro: 'I’m a BCA graduate and MCA student who enjoys building useful software, experimenting with AI, and solving real-world problems through technology.',
   education: ['Bachelor of Computer Applications (BCA)', 'Master of Computer Applications (MCA) · Ongoing'],
   interests: ['Applied AI and machine learning', 'Useful developer tools', 'Thoughtful product experiences'],

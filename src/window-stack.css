@@ -1,0 +1,143 @@
+/* Previous portfolio pages stay as straight, readable window layers behind the current page. */
+.window-stack {
+  position: absolute;
+  z-index: 6;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* The shared frame stays anchored; only its edge highlight animates on section changes. */
+.shared-window { animation: none; }
+.shared-window:not(.maximized) {
+  left: calc(50% + var(--active-x, 0px));
+  top: calc(50% + var(--active-y, 0px));
+}
+.shared-window.maximized { left: 7px; top: 7px; }
+.shared-window.switch-closing:not(.maximized) { transition: none !important; }
+.shared-window.switch-opening:not(.maximized) {
+  transition: left .34s cubic-bezier(.22, .8, .2, 1), top .34s cubic-bezier(.22, .8, .2, 1) !important;
+  animation: window-open-highlight .3s ease-out both;
+}
+.switch-closing .content-switch,
+.switch-opening .content-switch { animation: none !important; }
+
+@keyframes window-open-highlight {
+  from { outline: 3px solid rgba(157, 220, 255, .82); outline-offset: 0; }
+  to { outline: 0 solid transparent; outline-offset: 0; }
+}
+
+.outside-scroll-hint {
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 10px;
+  border: 1px solid rgba(225, 244, 255, .48);
+  border-radius: 4px;
+  background: rgba(18, 50, 78, .76);
+  box-shadow: 0 3px 12px rgba(0, 25, 49, .22);
+  color: #f3f9ff;
+  font: 9px Tahoma, sans-serif;
+  letter-spacing: .06em;
+  text-shadow: 0 1px 2px #102945;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.outside-scroll-hint span { color: #c2eeff; font: 16px 'Segoe UI', sans-serif; }
+
+.previous-window {
+  position: absolute;
+  z-index: calc(3 + var(--stack-layer));
+  left: calc(50% + var(--stack-x));
+  top: calc(50% + var(--stack-y));
+  width: min(940px, calc(100vw - 190px));
+  height: min(650px, calc(100dvh - 130px));
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #1356b5;
+  border-radius: 7px;
+  background: #f0f0e8;
+  box-shadow: 0 17px 42px rgba(0, 31, 82, .28), inset 0 1px #fff;
+  transform: translate(-50%, -50%);
+  animation: none !important;
+  transition: none !important;
+}
+
+.window-stack.maximized .previous-window {
+  left: calc(7px + clamp(-10px, var(--stack-x), 10px));
+  top: calc(7px + clamp(-10px, var(--stack-y), 10px));
+  width: calc(100vw - 14px);
+  height: calc(100dvh - 61px);
+  transform: none;
+}
+
+.previous-window .titlebar {
+  flex: none;
+  height: 32px;
+  padding: 0 10px;
+  background: linear-gradient(180deg, #4f9df4, #1764d4 58%, #0d56bb);
+  border-bottom: 1px solid #0849a5;
+  color: white;
+}
+
+.previous-window .title-app { color: white; font: 700 12px Tahoma, sans-serif; }
+.previous-window .tiny-app { color: white; }
+
+.previous-window-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  padding: 25px clamp(20px, 4vw, 46px);
+  overflow: hidden;
+  background: #fff;
+  color: #315070;
+}
+
+.previous-window-body>svg { color: #4387ce; }
+.previous-window-body strong { color: #173d70; font: 700 clamp(17px, 2.2vw, 25px) Tahoma, sans-serif; }
+.previous-window-body span { max-width: 510px; color: #597080; font-size: 12px; line-height: 1.6; }
+.dark-mode .previous-window { border-color: #456a95; background: #263545; }
+.dark-mode .previous-window-body { background: #1e2b38; color: #d5e5f4; }
+.dark-mode .previous-window-body strong { color: #e5f0ff; }
+.dark-mode .previous-window-body span { color: #b5c8da; }
+
+@media (max-width: 760px) {
+  .outside-scroll-hint { top: 12px; right: 9px; padding: 4px 6px; font-size: 8px; }
+  .outside-scroll-hint span { font-size: 13px; }
+  .desktop-top .top-right { display: none; }
+  .shared-window.switch-closing:not(.maximized) { transition: none !important; }
+  .shared-window.switch-opening:not(.maximized) { transition: left .34s cubic-bezier(.22, .8, .2, 1), top .34s cubic-bezier(.22, .8, .2, 1) !important; }
+  .shared-window:not(.maximized) {
+    left: calc(6px + clamp(-7px, var(--active-x, 0px), 7px)) !important;
+    top: calc(103px + clamp(-7px, var(--active-y, 0px), 7px)) !important;
+  }
+  .desktop.scene-welcome .shared-window:not(.maximized) { top: auto !important; bottom: 50px; }
+  .shared-window.maximized { left: 5px !important; top: 5px !important; }
+  .previous-window {
+    left: calc(6px + clamp(-7px, var(--stack-x), 7px));
+    top: calc(103px + clamp(-7px, var(--stack-y), 7px));
+    width: calc(100vw - 12px);
+    height: calc(100dvh - 149px);
+    min-height: 0;
+    transform: none;
+  }
+  .window-stack.maximized .previous-window { left: calc(5px + clamp(-7px, var(--stack-x), 7px)); top: calc(5px + clamp(-7px, var(--stack-y), 7px)); width: calc(100vw - 10px); height: calc(100dvh - 47px); }
+  .desktop.scene-welcome .window-stack:not(.maximized) .previous-window { top: auto; bottom: calc(50px - clamp(-7px, var(--stack-y), 7px)); height: min(390px, calc(100dvh - 205px)); }
+  .previous-window-body { padding: 18px; }
+  .previous-window-body span { font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .previous-window { scroll-behavior: auto; }
+  .shared-window.switch-closing:not(.maximized),
+  .shared-window.switch-opening:not(.maximized) { animation: none; }
+}
