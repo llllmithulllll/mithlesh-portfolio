@@ -16,5 +16,6 @@ import './dark-mode.css';
 import './mobile.css';
 import './window-stack.css';
 import './admin-social.css';
+import './xp-polish.css';
 
 createRoot(document.getElementById('root')!).render(<React.StrictMode>{window.location.pathname.replace(/\/$/,'')==='/admin'?<PortfolioAdmin/>:<Desktop/>}</React.StrictMode>);

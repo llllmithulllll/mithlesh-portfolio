@@ -1,0 +1,61 @@
+/* Windows XP inspired desktop details and scroll containment. */
+.desktop:before {
+  background-image: linear-gradient(180deg, rgba(13, 55, 99, .025), rgba(15, 60, 25, .035)), url('/windows-xp-bliss.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.desktop.wall-1:before,
+.desktop.wall-2:before { filter: none; }
+
+.desktop-top .top-right {
+  gap: 10px;
+  padding: 7px 10px;
+  border: 1px solid rgba(220, 239, 255, .68);
+  border-radius: 4px;
+  background: linear-gradient(180deg, rgba(47, 116, 184, .88), rgba(20, 72, 139, .88));
+  box-shadow: inset 0 1px rgba(255,255,255,.3), 0 2px 9px rgba(9, 39, 83, .27);
+  color: #f7fbff;
+  text-shadow: 0 1px 2px rgba(0, 30, 77, .75);
+}
+.current-scene-label {
+  border-color: rgba(231, 245, 255, .75);
+  background: linear-gradient(#fafdff, #d8e9f8);
+  color: #214a77;
+  text-shadow: 0 1px #fff;
+  box-shadow: inset 0 1px #fff, 0 1px 3px rgba(0, 28, 70, .18);
+}
+.marker-hint {
+  border-color: rgba(223, 240, 255, .8);
+  background: linear-gradient(180deg, rgba(63, 139, 205, .96), rgba(30, 91, 166, .96));
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 34, 82, .65);
+  box-shadow: inset 0 1px rgba(255,255,255,.35), 0 4px 12px rgba(0, 30, 74, .27);
+}
+.marker-hint small { color: #dceeff; }
+.outside-scroll-hint {
+  border-color: rgba(221, 239, 255, .78);
+  background: linear-gradient(180deg, rgba(64, 137, 201, .96), rgba(28, 87, 160, .96));
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 34, 82, .65);
+  box-shadow: inset 0 1px rgba(255,255,255,.32), 0 4px 12px rgba(0, 30, 74, .27);
+}
+
+.shared-explorer-content {
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+.start-orb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 112px;
+}
+.start-flag { width: 20px; height: 20px; flex: 0 0 20px; filter: drop-shadow(0 1px 1px rgba(0, 52, 7, .48)); }
+.start-text { font-style: italic; text-transform: none; }
+
+@media (max-width: 760px) {
+  .desktop-top .top-right { padding: 5px 7px; gap: 6px; }
+}
